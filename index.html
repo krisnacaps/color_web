@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change color</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="title">Choose Background Color</div>
+        <div class="box">
+            <div class="color-circle color-1"></div>
+            <div class="color-circle color-2"></div>
+            <div class="color-circle color-3"></div>
+        </div>
+        <div class="reset">
+            <button id="button">reset</button>
+        </div>
+    </div>
+
+    <script>
+        const circles = document.querySelectorAll(".color-circle");
+        const title = document.querySelector(".title");
+        circles.forEach(circle => {
+            circle.addEventListener("click", ({ target }) => {
+                const computedStyle = window.getComputedStyle(target);
+                document.body.style.backgroundColor = computedStyle.backgroundColor;
+                if(circle.className === "color-circle color-1"){
+                    title.style.color = "#e9e9e9"
+                } else if(circle.className === "color-circle color-2"){
+                    title.style.color = "#3c484a"
+                } else {
+                    title.style.color = "#ffffff"
+                }
+            })
+        })
+
+        const resetButton = document.querySelector("#button");
+        resetButton.addEventListener("click", () => {
+            document.body.style.backgroundColor = document.body.style.backgroundColor = "#fff";
+            title.style.color = "#4b4a4a";
+        })
+        
+    </script>
+</body>
+</html>
